@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.HomeFragment"
+    android:fillViewport="true"
+    android:overScrollMode="never">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:id="@+id/layoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageAvatar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:padding="2dp"
+            app:shapeAppearanceOverlay="@style/ShapeCircle"
+            app:strokeColor="@color/colorBluePrimary"
+            app:strokeWidth="1dp"/>
+        <TextView
+            android:id="@+id/textWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/imageAvatar"
+            android:text="Welcome back"/>
+        <TextView
+            android:id="@+id/textUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/imageAvatar"
+            android:layout_below="@id/textWelcome"
+            android:text="Username ..."
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+        <ImageView
+            android:id="@+id/imageNotification"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_thongbao"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="6dp"
+            app:cardCornerRadius="24dp">
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutTextRecommended"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutTop">
+        <TextView
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Recommended for you"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/textViewRecommended"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="view all"
+            android:textColor="@color/colorBluePrimary"
+            android:textAlignment="textEnd"
+            android:textStyle="italic"
+            android:textSize="16sp"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerRecommended"
+
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:layout_marginTop="6dp"
+    android:overScrollMode="never"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/layoutTextRecommended"/>
+    <LinearLayout
+        android:id="@+id/layoutTextCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerRecommended">
+        <TextView
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/textViewCategory"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="view all"
+            android:textColor="@color/colorBluePrimary"
+            android:textAlignment="textEnd"
+            android:textStyle="italic"
+            android:textSize="16sp"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCategory"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:overScrollMode="never"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+
+    app:layout_constraintTop_toBottomOf="@id/layoutTextCategory"/>
+    <TextView
+        android:id="@+id/textMoreTrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recyclerCategory"
+        android:text="More Trip for you"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMoreTrip"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="6dp"
+        android:overScrollMode="never"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textMoreTrip"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentHome">
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- HOME FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.example.congthucnauan.ui.home.HomeFragment"
+        android:label="Home">
+
+        <action
+            android:id="@+id/action_home_to_category"
+            app:destination="@id/fragmentCategory"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_home_to_favorite"
+            app:destination="@id/fragmentFavorite"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_home_to_recommended"
+            app:destination="@id/recommendedFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_home_to_profile"
+            app:destination="@id/fragmentProfile"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- CATEGORY FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/fragmentCategory"
+        android:name="com.example.congthucnauan.ui.category.CategoryFragment"
+        android:label="Category">
+
+        <action
+            android:id="@+id/action_category_to_home"
+            app:destination="@id/fragmentHome"
+            app:popUpTo="@id/fragmentHome"
+            app:popUpToInclusive="false" />
+
+        <action
+            android:id="@+id/action_category_to_addCategory"
+            app:destination="@id/fragmentAddCategory"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_category_to_editCategory"
+            app:destination="@id/fragmentAddCategory"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ADD/EDIT CATEGORY FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/fragmentAddCategory"
+        android:name="com.example.congthucnauan.ui.category.AddCategoryFragment"
+        android:label="Add/Edit Category">
+
+        <action
+            android:id="@+id/action_addCategory_to_category"
+            app:destination="@id/fragmentCategory"
+            app:popUpTo="@id/fragmentCategory"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- FAVORITE FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/fragmentFavorite"
+        android:name="com.example.congthucnauan.ui.favorite.FavoriteFragment"
+        android:label="Favorite">
+
+        <action
+            android:id="@+id/action_favorite_to_home"
+            app:destination="@id/fragmentHome"
+            app:popUpTo="@id/fragmentHome"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- PROFILE FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.example.congthucnauan.ui.profile.ProfileFragment"
+        android:label="Profile">
+
+        <action
+            android:id="@+id/action_profile_to_home"
+            app:destination="@id/fragmentHome"
+            app:popUpTo="@id/fragmentHome"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- RECOMMENDED FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/recommendedFragment"
+        android:name="com.example.congthucnauan.recommend.RecommendedFragment"
+        android:label="Recommended">
+
+        <action
+            android:id="@+id/action_recommended_to_detail"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_recommended_to_home"
+            app:destination="@id/fragmentHome"
+            app:popUpTo="@id/fragmentHome"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- DETAIL FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.congthucnauan.recommend.DetailFragment"
+        android:label="Detail">
+
+        <action
+            android:id="@+id/action_detail_to_recommended"
+            app:destination="@id/recommendedFragment"
+            app:popUpTo="@id/recommendedFragment"
+            app:popUpToInclusive="false" />
+
+        <action
+            android:id="@+id/action_detail_to_home"
+            app:destination="@id/fragmentHome"
+            app:popUpTo="@id/fragmentHome"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ADMIN DASHBOARD FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/adminDashboardFragment"
+        android:name="com.example.congthucnauan.admin.AdminDashboardFragment"
+        android:label="Admin Dashboard">
+
+        <action
+            android:id="@+id/action_dashboard_to_category"
+            app:destination="@id/adminCategoryManagementFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_dashboard_to_user"
+            app:destination="@id/adminUserManagementFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_dashboard_to_report"
+            app:destination="@id/adminReportFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ADMIN CATEGORY MANAGEMENT FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/adminCategoryManagementFragment"
+        android:name="com.example.congthucnauan.admin.AdminCategoryManagementFragment"
+        android:label="Quản lý danh mục">
+
+        <action
+            android:id="@+id/action_adminCategory_to_addCategory"
+            app:destination="@id/fragmentAddCategory"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_adminCategory_to_editCategory"
+            app:destination="@id/fragmentAddCategory"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_adminCategory_to_dashboard"
+            app:destination="@id/adminDashboardFragment"
+            app:popUpTo="@id/adminDashboardFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ADMIN USER MANAGEMENT FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/adminUserManagementFragment"
+        android:name="com.example.congthucnauan.admin.AdminUserManagementFragment"
+        android:label="Quản lý user">
+
+        <action
+            android:id="@+id/action_adminUser_to_editUser"
+            app:destination="@id/adminEditUserFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_adminUser_to_dashboard"
+            app:destination="@id/adminDashboardFragment"
+            app:popUpTo="@id/adminDashboardFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ADMIN REPORT/STATISTICS FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/adminReportFragment"
+        android:name="com.example.congthucnauan.admin.AdminStatisticsFragment"
+        android:label="Báo cáo">
+
+        <action
+            android:id="@+id/action_adminReport_to_dashboard"
+            app:destination="@id/adminDashboardFragment"
+            app:popUpTo="@id/adminDashboardFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ADMIN EDIT USER FRAGMENT -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <fragment
+        android:id="@+id/adminEditUserFragment"
+        android:name="com.example.congthucnauan.admin.AdminEditUserFragment"
+        android:label="Sửa user">
+
+        <action
+            android:id="@+id/action_adminEditUser_to_userManagement"
+            app:destination="@id/adminUserManagementFragment"
+            app:popUpTo="@id/adminUserManagementFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+</navigation>

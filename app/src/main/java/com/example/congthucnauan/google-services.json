@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "594047809603",
+    "project_id": "ctna-996dc",
+    "storage_bucket": "ctna-996dc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594047809603:android:2d7084dd4825aa2aa6fcf6",
+        "android_client_info": {
+          "package_name": "com.example.congthucnauan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXU6rHn6IwKvbVChL28OEaOxodaaP5Aec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

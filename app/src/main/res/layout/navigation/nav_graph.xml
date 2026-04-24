@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentHome">
+
+    <!-- HOME -->
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.example.congthucnauan.ui.home.HomeFragment"
+        android:label="Home">
+
+        <action
+            android:id="@+id/action_home_to_category"
+            app:destination="@id/fragmentCategory" />
+
+        <action
+            android:id="@+id/action_home_to_favorite"
+            app:destination="@id/fragmentFavorite" />
+    </fragment>
+
+    <!-- CATEGORY -->
+    <fragment
+        android:id="@+id/fragmentCategory"
+        android:name="com.example.congthucnauan.ui.category.CategoryFragment"
+        android:label="Category">
+
+        <action
+            android:id="@+id/action_category_to_addCategory"
+            app:destination="@id/fragmentAddCategory" />
+
+        <action
+            android:id="@+id/action_category_to_editCategory"
+            app:destination="@id/fragmentEditCategory" />
+    </fragment>
+
+    <!-- FAVORITE -->
+    <fragment
+        android:id="@+id/fragmentFavorite"
+        android:name="com.example.congthucnauan.ui.favorite.FavoriteFragment"
+        android:label="Favorite" />
+
+    <!-- PROFILE -->
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.example.congthucnauan.ui.profile.ProfileFragment"
+        android:label="Profile" />
+
+    <!-- ADD CATEGORY -->
+    <fragment
+        android:id="@+id/fragmentAddCategory"
+        android:name="com.example.congthucnauan.ui.category.AddCategoryFragment"
+        android:label="Add Category" />
+
+    <!-- EDIT CATEGORY -->
+    <fragment
+        android:id="@+id/fragmentEditCategory"
+        android:name="com.example.congthucnauan.ui.category.EditFragment"
+        android:label="Edit Category">
+
+        <argument
+            android:name="categoryId"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

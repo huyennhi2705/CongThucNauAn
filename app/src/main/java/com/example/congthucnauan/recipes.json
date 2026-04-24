@@ -1,0 +1,39 @@
+{
+  "id": "1",
+  "name": "Bún Bò Huế",
+  "category": "Món Việt",
+  "difficulty": "Trung bình",
+  "time": "90 phút",
+  "calories": "410 kcal",
+  "rating": 4.8,
+  "description": "Món ăn đặc trưng miền Trung",
+  "favorite": false,
+  "userId": "user1",
+
+
+ "id": "2",
+  "name": "Cơm Tấm",
+  "category": "Món Việt",
+  "difficulty": "Dễ",
+  "time": "45 phút",
+  "calories": "520 kcal",
+  "rating": 4.7,
+  "description": "Cơm tấm sườn bì",
+  "favorite": false,
+  "userId": "user1",
+
+
+
+  "id": "3",
+  "name": "Phở Bò",
+  "category": "Món nước",
+  "difficulty": "Khó",
+  "time": "120 phút",
+  "calories": "350 kcal",
+  "rating": 4.9,
+  "description": "Phở truyền thống Việt Nam",
+  "favorite": false,
+  "userId": "user1"
+}
+
+

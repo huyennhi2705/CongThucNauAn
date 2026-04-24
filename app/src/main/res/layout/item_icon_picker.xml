@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Layout cho mỗi ô emoji trong icon picker.
+    Được inflate bằng code trong AddCategoryFragment.setupIconPicker()
+-->
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="56dp"
+    android:layout_height="56dp"
+    android:layout_marginEnd="8dp"
+    android:gravity="center"
+    android:textSize="28sp"
+    android:padding="4dp"
+    android:background="@drawable/bg_icon_picker_item"
+    android:clickable="true"
+    android:focusable="true" />

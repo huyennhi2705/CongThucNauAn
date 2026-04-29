@@ -1,7 +1,6 @@
 package com.example.congthucnauan.ui.home;
 
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.util.Log;
 import android.view.*;
 import android.widget.TextView;
@@ -36,39 +35,11 @@ public class HomeFragment extends Fragment {
     // Firebase
     private DatabaseReference categoryRef, recipeRef;
     private ValueEventListener categoryListener, recipeListener;
-=======
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.congthucnauan.R;
-import com.example.congthucnauan.adapter.HomeCategoryAdapter;
-import com.example.congthucnauan.models.Category;
-import com.google.firebase.database.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class HomeFragment extends Fragment {
-
-    private DatabaseReference categoryRef;
-    private ValueEventListener categoryListener;
-    private HomeCategoryAdapter adapter;
->>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
 
     public HomeFragment() {}
 
     @Nullable
     @Override
-<<<<<<< HEAD
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -166,36 +137,10 @@ public class HomeFragment extends Fragment {
 
     // ===== LOAD CATEGORY =====
     private void loadCategories() {
-=======
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        // ===== NAVIGATION =====
-
-        view.findViewById(R.id.textViewCategory).setOnClickListener(v ->
-                Navigation.findNavController(v).navigate(R.id.action_home_to_category)
-        );
-
-        // ===== RECYCLER CATEGORY =====
-        RecyclerView recyclerCategory = view.findViewById(R.id.recyclerCategory);
-        recyclerCategory.setLayoutManager(
-                new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false)
-        );
-
-        adapter = new HomeCategoryAdapter(new ArrayList<>());
-        recyclerCategory.setAdapter(adapter);
-
-        // ===== FIREBASE =====
-        categoryRef = FirebaseDatabase.getInstance().getReference("categories");
-
->>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
         categoryListener = categoryRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<Category> list = new ArrayList<>();
-<<<<<<< HEAD
 
                 for (DataSnapshot data : snapshot.getChildren()) {
                     Category c = data.getValue(Category.class);
@@ -206,18 +151,10 @@ public class HomeFragment extends Fragment {
                 }
 
                 moreAdapter.setData(list); // ✅ đúng
-=======
-                for (DataSnapshot data : snapshot.getChildren()) {
-                    Category cat = data.getValue(Category.class);
-                    if (cat != null) list.add(cat);
-                }
-                adapter.setData(list);
->>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-<<<<<<< HEAD
                 Log.e(TAG, "Category error: " + error.getMessage());
             }
         });
@@ -248,20 +185,11 @@ public class HomeFragment extends Fragment {
                 Log.e(TAG, "Recipe error: " + error.getMessage());
             }
         });
-=======
-                Toast.makeText(requireContext(),
-                        "Lỗi: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        return view;
->>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-<<<<<<< HEAD
 
         if (categoryRef != null && categoryListener != null) {
             categoryRef.removeEventListener(categoryListener);
@@ -270,10 +198,5 @@ public class HomeFragment extends Fragment {
         if (recipeRef != null && recipeListener != null) {
             recipeRef.removeEventListener(recipeListener);
         }
-=======
-        if (categoryRef != null && categoryListener != null) {
-            categoryRef.removeEventListener(categoryListener);
-        }
->>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     }
 }

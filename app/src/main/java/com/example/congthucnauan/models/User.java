@@ -62,7 +62,11 @@ public class User implements Serializable {
     }
 
     public String getRole() {
+<<<<<<< HEAD
         return role != null ? role : "user";
+=======
+        return role;
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     }
 
     public void setRole(String role) {

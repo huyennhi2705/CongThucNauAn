@@ -39,8 +39,14 @@ public class EditFragment extends Fragment {
 
     private String categoryId = "";
     private String selectedIcon = "monanchinh";
+<<<<<<< HEAD
 
     // ICON DATA
+=======
+    private String categoryType = "Danh mục";
+
+    // Tên icon lưu Firebase
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     private final String[] ICON_NAMES = {
             "monanchinh",
             "montrangmieng",
@@ -48,6 +54,10 @@ public class EditFragment extends Fragment {
             "monnuoc"
     };
 
+<<<<<<< HEAD
+=======
+    // Tên hiển thị
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     private final String[] ICON_LABELS = {
             "Món ăn chính",
             "Món tráng miệng",
@@ -55,6 +65,10 @@ public class EditFragment extends Fragment {
             "Món nước"
     };
 
+<<<<<<< HEAD
+=======
+    // Drawable tương ứng
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     private final int[] ICON_RES = {
             R.drawable.monanchinh,
             R.drawable.montrangmieng,
@@ -62,15 +76,26 @@ public class EditFragment extends Fragment {
             R.drawable.monnuoc
     };
 
+<<<<<<< HEAD
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
+=======
+    public EditFragment() {
+        // Required empty public constructor
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_edit_category, container, false);
     }
 
     @Override
+<<<<<<< HEAD
     public void onViewCreated(@NonNull View view,
                               @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -103,6 +128,12 @@ public class EditFragment extends Fragment {
     }
 
     private void bindViews(View view) {
+=======
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Ánh xạ view
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
         edtName = view.findViewById(R.id.edtName);
         edtDescription = view.findViewById(R.id.edtDescription);
         imgIcon = view.findViewById(R.id.imgIcon);
@@ -110,6 +141,7 @@ public class EditFragment extends Fragment {
         btnSave = view.findViewById(R.id.buttonSave);
         toolbar = view.findViewById(R.id.toolbarTop);
         cardIconPicker = view.findViewById(R.id.cardIconPicker);
+<<<<<<< HEAD
     }
 
     // ================= LOAD DATA =================
@@ -156,6 +188,82 @@ public class EditFragment extends Fragment {
     private void showIconPickerDialog() {
         new AlertDialog.Builder(requireContext())
                 .setTitle("Chọn icon")
+=======
+
+        // Firebase
+        categoryRef = FirebaseDatabase.getInstance().getReference("categories");
+
+        // Nhận ID từ Bundle
+        if (getArguments() != null) {
+            categoryId = getArguments().getString("categoryId", "");
+        }
+
+        if (TextUtils.isEmpty(categoryId)) {
+            Toast.makeText(requireContext(), "Không tìm thấy ID danh mục!", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(view).popBackStack();
+            return;
+        }
+
+        // Toolbar back
+        toolbar.setNavigationOnClickListener(v ->
+                Navigation.findNavController(v).popBackStack()
+        );
+
+        // Chọn icon
+        cardIconPicker.setOnClickListener(v -> showIconPickerDialog());
+
+        // Load dữ liệu cũ
+        loadCategoryData();
+
+        // Lưu cập nhật
+        btnSave.setOnClickListener(v -> updateCategory());
+    }
+
+    private void loadCategoryData() {
+        categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Category category = snapshot.getValue(Category.class);
+
+                if (category == null) {
+                    Toast.makeText(requireContext(), "Không tìm thấy dữ liệu danh mục!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                edtName.setText(category.getName() != null ? category.getName() : "");
+                edtDescription.setText(category.getDescription() != null ? category.getDescription() : "");
+
+                if (!TextUtils.isEmpty(category.getType())) {
+                    categoryType = category.getType();
+                }
+
+                if (!TextUtils.isEmpty(category.getIcon())) {
+                    selectedIcon = category.getIcon();
+                }
+
+                int index = getIconIndex(selectedIcon);
+                if (index != -1) {
+                    imgIcon.setImageResource(ICON_RES[index]);
+                    txtIconLabel.setText(ICON_LABELS[index]);
+                } else {
+                    imgIcon.setImageResource(R.drawable.ic_launcher_foreground);
+                    txtIconLabel.setText("Nhấn để chọn icon");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(requireContext(),
+                        "Lỗi tải dữ liệu: " + error.getMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void showIconPickerDialog() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Chọn icon cho danh mục")
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
                 .setItems(ICON_LABELS, (dialog, which) -> {
                     selectedIcon = ICON_NAMES[which];
                     imgIcon.setImageResource(ICON_RES[which]);
@@ -165,6 +273,7 @@ public class EditFragment extends Fragment {
                 .show();
     }
 
+<<<<<<< HEAD
     // ================= UPDATE CATEGORY =================
     private void updateCategory() {
 
@@ -175,6 +284,11 @@ public class EditFragment extends Fragment {
         String desc = edtDescription.getText() != null
                 ? edtDescription.getText().toString().trim()
                 : "";
+=======
+    private void updateCategory() {
+        String name = edtName.getText() != null ? edtName.getText().toString().trim() : "";
+        String desc = edtDescription.getText() != null ? edtDescription.getText().toString().trim() : "";
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
 
         if (TextUtils.isEmpty(name)) {
             edtName.setError("Vui lòng nhập tên danh mục");
@@ -184,6 +298,10 @@ public class EditFragment extends Fragment {
 
         Category updatedCategory = new Category(
                 categoryId,
+<<<<<<< HEAD
+=======
+                categoryType,
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
                 name,
                 desc,
                 selectedIcon
@@ -192,19 +310,30 @@ public class EditFragment extends Fragment {
         categoryRef.child(categoryId).setValue(updatedCategory)
                 .addOnSuccessListener(unused -> {
                     Toast.makeText(requireContext(),
+<<<<<<< HEAD
                             "Cập nhật thành công!",
+=======
+                            "Cập nhật danh mục thành công!",
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
                             Toast.LENGTH_SHORT).show();
 
                     Navigation.findNavController(requireView()).popBackStack();
                 })
                 .addOnFailureListener(e ->
                         Toast.makeText(requireContext(),
+<<<<<<< HEAD
                                 "Lỗi: " + e.getMessage(),
+=======
+                                "Lỗi cập nhật: " + e.getMessage(),
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
                                 Toast.LENGTH_SHORT).show()
                 );
     }
 
+<<<<<<< HEAD
     // ================= ICON INDEX =================
+=======
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     private int getIconIndex(String iconName) {
         for (int i = 0; i < ICON_NAMES.length; i++) {
             if (ICON_NAMES[i].equals(iconName)) {

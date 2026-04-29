@@ -4,9 +4,13 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/fragmentHome">
 
+<<<<<<< HEAD
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- HOME FRAGMENT -->
     <!-- ═══════════════════════════════════════════════════════════ -->
+=======
+    <!-- HOME -->
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     <fragment
         android:id="@+id/fragmentHome"
         android:name="com.example.congthucnauan.ui.home.HomeFragment"
@@ -14,6 +18,7 @@
 
         <action
             android:id="@+id/action_home_to_category"
+<<<<<<< HEAD
             app:destination="@id/fragmentCategory"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
@@ -40,12 +45,23 @@
     <!-- ═══════════════════════════════════════════════════════════ -->
     <!-- CATEGORY FRAGMENT -->
     <!-- ═══════════════════════════════════════════════════════════ -->
+=======
+            app:destination="@id/fragmentCategory" />
+
+        <action
+            android:id="@+id/action_home_to_favorite"
+            app:destination="@id/fragmentFavorite" />
+    </fragment>
+
+    <!-- CATEGORY -->
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     <fragment
         android:id="@+id/fragmentCategory"
         android:name="com.example.congthucnauan.ui.category.CategoryFragment"
         android:label="Category">
 
         <action
+<<<<<<< HEAD
             android:id="@+id/action_category_to_home"
             app:destination="@id/fragmentHome"
             app:popUpTo="@id/fragmentHome"
@@ -254,6 +270,43 @@
             app:destination="@id/adminUserManagementFragment"
             app:popUpTo="@id/adminUserManagementFragment"
             app:popUpToInclusive="false" />
+=======
+            android:id="@+id/action_category_to_addCategory"
+            app:destination="@id/fragmentAddCategory" />
+
+        <action
+            android:id="@+id/action_category_to_editCategory"
+            app:destination="@id/fragmentEditCategory" />
+    </fragment>
+
+    <!-- FAVORITE -->
+    <fragment
+        android:id="@+id/fragmentFavorite"
+        android:name="com.example.congthucnauan.ui.favorite.FavoriteFragment"
+        android:label="Favorite" />
+
+    <!-- PROFILE -->
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.example.congthucnauan.ui.profile.ProfileFragment"
+        android:label="Profile" />
+
+    <!-- ADD CATEGORY -->
+    <fragment
+        android:id="@+id/fragmentAddCategory"
+        android:name="com.example.congthucnauan.ui.category.AddCategoryFragment"
+        android:label="Add Category" />
+
+    <!-- EDIT CATEGORY -->
+    <fragment
+        android:id="@+id/fragmentEditCategory"
+        android:name="com.example.congthucnauan.ui.category.EditFragment"
+        android:label="Edit Category">
+
+        <argument
+            android:name="categoryId"
+            app:argType="string" />
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     </fragment>
 
 </navigation>

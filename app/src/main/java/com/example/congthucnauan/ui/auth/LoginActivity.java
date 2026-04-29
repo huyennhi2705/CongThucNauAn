@@ -2,13 +2,22 @@ package com.example.congthucnauan.ui.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.widget.TextView;
 import android.widget.Toast;
 
+=======
+import android.util.Patterns;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.congthucnauan.MainActivity;
 import com.example.congthucnauan.R;
+<<<<<<< HEAD
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,26 +29,46 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
+=======
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+public class LoginActivity extends AppCompatActivity {
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     private TextInputEditText editEmail, editPassword;
     private MaterialButton buttonLogin;
     private TextView textSignUp, txtForgotPassword;
     private FirebaseAuth mAuth;
+<<<<<<< HEAD
     private DatabaseReference mDatabase;
 
+=======
+    private DatabaseReference databaseReference;
+    private static final String FIREBASE_URL =
+            "https://ctna-996dc-default-rtdb.firebaseio.com/";
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+<<<<<<< HEAD
 
         // Initialize Firebase
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Initialize UI elements
+=======
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
         editEmail = findViewById(R.id.editEmail);
         editPassword = findViewById(R.id.editPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
         textSignUp = findViewById(R.id.textSignUp);
+<<<<<<< HEAD
         txtForgotPassword = findViewById(R.id.txtForgotPassword);
 
         // Set click listeners
@@ -53,17 +82,51 @@ public class LoginActivity extends AppCompatActivity {
         String password = editPassword.getText().toString().trim();
 
         // Validation
+=======
+        txtForgotPassword =findViewById(R.id.txtForgotPassword);
+        mAuth = FirebaseAuth.getInstance();
+
+        // Kiểm tra nếu có email/password từ RegisterActivity
+        if (getIntent() != null) {
+            String emailFromRegister = getIntent().getStringExtra("email");
+            String passwordFromRegister = getIntent().getStringExtra("password");
+            if (emailFromRegister != null && passwordFromRegister != null) {
+                editEmail.setText(emailFromRegister);
+                editPassword.setText(passwordFromRegister);
+            }
+        }
+        buttonLogin.setOnClickListener(v -> loginUser());
+        textSignUp.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        });
+        txtForgotPassword.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
+        });
+    }
+    private void loginUser() {
+        String email = editEmail.getText().toString().trim();
+        String password = editPassword.getText().toString().trim();
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
         if (email.isEmpty()) {
             editEmail.setError("Vui lòng nhập email");
             editEmail.requestFocus();
             return;
         }
+<<<<<<< HEAD
 
+=======
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            editEmail.setError("Email không hợp lệ");
+            editEmail.requestFocus();
+            return;
+        }
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
         if (password.isEmpty()) {
             editPassword.setError("Vui lòng nhập mật khẩu");
             editPassword.requestFocus();
             return;
         }
+<<<<<<< HEAD
 
         if (password.length() < 6) {
             editPassword.setError("Mật khẩu phải ít nhất 6 ký tự");
@@ -182,4 +245,23 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
+=======
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }else {
+                            Toast.makeText(LoginActivity.this, "Đăng nhập thất bại: " +
+                                    task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
 }

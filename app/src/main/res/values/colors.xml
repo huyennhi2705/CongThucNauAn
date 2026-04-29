@@ -11,6 +11,7 @@
     <color name="purple_500">#6200EE</color>
     <color name="purple_700">#3700B3</color>
     <color name="teal_200">#03DAC5</color>
+<<<<<<< HEAD
     <color name="bg_card">#FFFFFF</color>
     <color name="bg_white">#E0E0E0</color>
     <color name="border_light">#E0E0E0</color>
@@ -29,4 +30,6 @@
     <color name="cat_viet">#EDEDED</color>
 
 
+=======
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
 </resources>

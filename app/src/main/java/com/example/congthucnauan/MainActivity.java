@@ -1,6 +1,7 @@
 package com.example.congthucnauan;
 
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,4 +60,26 @@ public class MainActivity extends AppCompatActivity {
     public String getCurrentUserRole() { return currentUserRole; }
     public String getCurrentUserId()   { return currentUserId; }
     public String getCurrentUserName() { return currentUserName; }
+=======
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
+>>>>>>> 791d8f0549adef46b1e57d3074ae385c6f7f8be4
 }
